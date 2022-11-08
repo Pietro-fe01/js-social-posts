@@ -59,7 +59,6 @@ const posts = [
 ];
 
 const container = document.getElementById("container");
-let ifLiked = true;
 
 for(let i=0; i<posts.length; i++){
     //Mi seleziono il template HTML
@@ -80,10 +79,11 @@ for(let i=0; i<posts.length; i++){
     postTemplate.querySelector(".post__image img").setAttribute('src', posts[i].media);
 
     postTemplate.querySelector(".likes__counter strong").innerHTML = posts[i].likes;
-
+    
+    let ifLiked = true;
     const likeButton = postTemplate.querySelector(".like-button");
     likeButton.addEventListener("click", function(){
-        if (ifLiked === true){
+        if (ifLiked){
             likeButton.classList.add("like-button--liked");
             const totalLikes = (posts[i].likes) + 1;
             console.log(totalLikes);
@@ -99,4 +99,3 @@ for(let i=0; i<posts.length; i++){
     //Stampo il template nell'HTML
     container.append(postTemplate);
 }
-
