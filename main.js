@@ -58,12 +58,17 @@ const posts = [
     }
 ];
 
+/*-----------------
+    MY CODE
+-------------------*/
+// Seleziono il container in cui andranno stampati i post
 const container = document.getElementById("container");
 
 for(let i=0; i<posts.length; i++){
-    //Mi seleziono il template HTML
-    
+    //Mi seleziono il template HTML del post statico
     const postTemplate = document.getElementById("post-template").content.cloneNode(true);
+    const likeButton = postTemplate.querySelector(".like-button");
+    const likesCounter = postTemplate.querySelector(".likes__counter strong");
 
     if(posts[i].author.image === null){
     } else {
@@ -78,24 +83,19 @@ for(let i=0; i<posts.length; i++){
 
     postTemplate.querySelector(".post__image img").setAttribute('src', posts[i].media);
 
-    postTemplate.querySelector(".likes__counter strong").innerHTML = posts[i].likes;
-    
-    let ifLiked = true;
-    const likeButton = postTemplate.querySelector(".like-button");
+    likesCounter.innerHTML = posts[i].likes;
+
     likeButton.addEventListener("click", function(){
-        if (ifLiked){
+        if (!likeButton.classList.contains("like-button--liked")){
             likeButton.classList.add("like-button--liked");
-            const totalLikes = (posts[i].likes) + 1;
-            console.log(totalLikes);
-            ifLiked = false;
+            likesCounter.innerHTML = posts[i].likes + 1;
         } else {
             likeButton.classList.remove("like-button--liked");
-            const totalLikes = posts[i].likes;
-            console.log(totalLikes);
-            ifLiked = true;
+            likesCounter.innerHTML = posts[i].likes;
         }
     });
-
+    
     //Stampo il template nell'HTML
     container.append(postTemplate);
 }
+
