@@ -58,6 +58,18 @@ const posts = [
     }
 ];
 
+/*-----------------------
+    MY CODE - FUNCTIONS
+-----------------------*/
+// Funzione che converte il formato data yyyy/mm/dd in dd/mm/yyyy
+function formatDate (input) {
+    const datePart = input.match(/\d+/g),
+    year = datePart[0],
+    month = datePart[1], day = datePart[2];
+
+    return day+'-'+month+'-'+year;
+}
+
 /*-----------------
     MY CODE
 -------------------*/
@@ -92,7 +104,7 @@ for(let i=0; i<posts.length; i++){
 
     postTemplate.querySelector('.post-meta__author').innerHTML = posts[i].author.name;
 
-    postTemplate.querySelector(".post-meta__time").innerHTML = posts[i].created;
+    postTemplate.querySelector(".post-meta__time").innerHTML = formatDate(posts[i].created);
 
     postTemplate.querySelector(".post__text").innerHTML = posts[i].content;
 
@@ -113,5 +125,3 @@ for(let i=0; i<posts.length; i++){
     //Stampo il template nell'HTML
     container.append(postTemplate);
 }
-
-
