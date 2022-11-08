@@ -55,3 +55,11 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+const container = document.getElementById("container");
+
+// Milestone 1 - Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
+for(let i=0; i<posts.length; i++){
+    const postTemplate = document.getElementById("post-template").content.cloneNode(true);
+    container.append(postTemplate);
+}
