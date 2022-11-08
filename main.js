@@ -1,3 +1,5 @@
+"use strict";
+
 const posts = [
     {
         "id": 1,
@@ -58,8 +60,25 @@ const posts = [
 
 const container = document.getElementById("container");
 
-// Milestone 1 - Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
 for(let i=0; i<posts.length; i++){
+    //Mi seleziono il template HTML
     const postTemplate = document.getElementById("post-template").content.cloneNode(true);
+
+    if(posts[i].author.image === null){
+    } else {
+        postTemplate.querySelector('.profile-pic').setAttribute('src', posts[i].author.image);
+    }
+
+    postTemplate.querySelector('.post-meta__author').innerHTML = posts[i].author.name;
+
+    postTemplate.querySelector(".post-meta__time").innerHTML = posts[i].created;
+
+    postTemplate.querySelector(".post__text").innerHTML = posts[i].content;
+
+    postTemplate.querySelector(".post__image img").setAttribute('src', posts[i].media);
+
+    postTemplate.querySelector(".likes__counter strong").innerHTML = posts[i].likes;
+
+    //Stampo il template nell'HTML
     container.append(postTemplate);
 }

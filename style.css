@@ -123,3 +123,17 @@ h1 {
     color: #0CD977;
     cursor: default;
 }
+
+/*---------------
+    MY STILE 
+----------------*/
+.profile-no-img{
+    width: 3.75rem;
+    height: 3.75rem;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.d-none{
+    display: none;
+}
