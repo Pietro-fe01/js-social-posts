@@ -59,9 +59,11 @@ const posts = [
 ];
 
 const container = document.getElementById("container");
+let ifLiked = true;
 
 for(let i=0; i<posts.length; i++){
     //Mi seleziono il template HTML
+    
     const postTemplate = document.getElementById("post-template").content.cloneNode(true);
 
     if(posts[i].author.image === null){
@@ -79,6 +81,22 @@ for(let i=0; i<posts.length; i++){
 
     postTemplate.querySelector(".likes__counter strong").innerHTML = posts[i].likes;
 
+    const likeButton = postTemplate.querySelector(".like-button");
+    likeButton.addEventListener("click", function(){
+        if (ifLiked === true){
+            likeButton.classList.add("like-button--liked");
+            const totalLikes = (posts[i].likes) + 1;
+            console.log(totalLikes);
+            ifLiked = false;
+        } else {
+            likeButton.classList.remove("like-button--liked");
+            const totalLikes = posts[i].likes;
+            console.log(totalLikes);
+            ifLiked = true;
+        }
+    });
+
     //Stampo il template nell'HTML
     container.append(postTemplate);
 }
+
