@@ -71,6 +71,21 @@ for(let i=0; i<posts.length; i++){
     const likesCounter = postTemplate.querySelector(".likes__counter strong");
 
     if(posts[i].author.image === null){
+        // Seleziono il tag img
+        const imgTag = postTemplate.querySelector('.profile-pic')
+        
+        // Creo un nuovo elemento DIV e gli assegno una classe
+        const newItem = document.createElement('div');
+        newItem.classList.add("profile-no-img");
+
+        // Tramite questo codice prendo la prima lettera di ogni parola
+        const stringName = posts[i].author.name;
+        const matches = stringName.match(/\b(\w)/g);
+        const acronym = matches.join('');
+        newItem.innerHTML = acronym;
+
+        // Sostituisco il tag img con il div
+        imgTag.parentNode.replaceChild(newItem, imgTag);
     } else {
         postTemplate.querySelector('.profile-pic').setAttribute('src', posts[i].author.image);
     }
@@ -98,4 +113,5 @@ for(let i=0; i<posts.length; i++){
     //Stampo il template nell'HTML
     container.append(postTemplate);
 }
+
 

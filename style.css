@@ -135,8 +135,10 @@ h1 {
 .profile-no-img{
     width: 3.75rem;
     height: 3.75rem;
-    background-color: red;
+    background: linear-gradient(143deg, rgba(204,149,192,1) 19%, rgba(219,212,180,1) 50%, rgba(122,161,210,1) 100%);
     border-radius: 50%;
+    text-align: center;
+    line-height: 3.75rem;
 }
 
 .d-none{
