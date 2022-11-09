@@ -113,6 +113,8 @@ for(let i=0; i<posts.length; i++){
 
     likesCounter.innerHTML = posts[i].likes;
 
+    likeButton.setAttribute("data-postid", posts[i].id);
+
     likeButton.addEventListener("click", function(){
         if (!likeButton.classList.contains("like-button--liked")){
             likeButton.classList.add("like-button--liked");
